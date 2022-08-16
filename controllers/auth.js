@@ -20,11 +20,12 @@ const login = async (req, res) => {
   if (!user) {
     throw new UnauthenticatedError("Invaild Creditials");
   }
+  //compare password
   const isPasswordCorrect = await user.comparePassword(password);
   if (!isPasswordCorrect) {
     throw new UnauthenticatedError("Invaild Creditials");
   }
-  //compare password
+
   const token = user.createJWT();
   res.status(StatusCodes.OK).json({ user: { name: user.name }, token });
 };
