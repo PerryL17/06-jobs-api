@@ -9,7 +9,7 @@ const auth = (req, res, next) => {
     throw new UnauthenticatedError("Authentication invalid");
   }
   const token = authHeader.split(" ")[1];
-  console.log(token);
+  //console.log(token);
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
     // attach the user to the job routes
